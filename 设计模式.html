@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Js Design Patterns</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			单例模式    (分组作用) 利用命名空间 避免冲突          实质==> 单个对象
+			var person1 ={
+				name: 'jack',
+				age: 25
+			};
+			var person2 ={
+				name: 'tom',
+				age: 28
+			};
+			console.log(person1.name);
+			console.log(person2.name);
+//			单例模式 ed
+//---------------------------
+
+//			工厂模式  （函数封装）    实质 ==> 函数
+//			优点：减少冗余代码，提高代码的重复利用率
+			function createPerson(name,age){
+				var obj={
+					name: name,
+					age: age,
+					say: function(){
+						console.log("我是"+this.name+','+'我'+this.age+'岁了');
+					}
+				};
+				return obj;
+			}
+			var person3 = createPerson('jack',24);
+			person3.say();
+//			工厂模式 ed
+//----------------------------
+
+//			构造函数模式
+//			目的：创建一个自定义类 并实现类的实例
+//			使用：通过new使用    与工厂模式的区别在于使用方式
+//      实例与实例之间是相互独立的
+				function CreatePersonNew(name,age) {
+					var obj={
+						name: name,
+						age: age,
+						say: function(){
+							console.log("我是"+this.name+','+'我'+this.age+'岁了');
+						}
+					};
+					return obj;
+				}
+				var person4 = new CreatePersonNew("rose",18);
+				person4.say();
+				
+//			构造函数模式ed
+//-------------------------------
+				
+//			原型链模式
+				function CreatePersonNeww(name,age){
+					this.name = name;
+					this.age = age;
+				}
+				CreatePersonNeww.prototype.say = function(){
+							console.log("我是"+this.name+','+'我'+this.age+'岁了');
+						} 
+				var person5 = new CreatePersonNeww('jack',15);
+				var person6 = new CreatePersonNeww('hack',10);
+				console.log(person5.say === person6.say);  //==>true
+				console.log(person5)
+//			对象类型(Object基类除外)自带__proto__   __proto__指向所属类的原型
+//			Object.prototype没有__proto__属性   
+//      每个构造函数都拥有prototype属性   指向一个对象
+
+//			***原型链： 对象的私有属性  --> 通过__proto__属性寻找所属类的原型  --> 通过上级的__proto__进行逐级向上查找 -->直到Objcet.prototype为止
+					
+//			原型链模式ed
+		</script>
+	</body>
+</html>
