@@ -1,4 +1,4 @@
 # DesignPatterns
 Js Design Patterns
-设计模式
+璁捐妯″紡
 
